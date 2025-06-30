@@ -9,28 +9,39 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png">
     <link rel="stylesheet" href="{{url('css/dashboard.css')}}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='%233b82f6' d='M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496 288 320 364.8 144 288L128 408z'/%3E%3C/svg%3E" />
     <style>
         .calendar-container {
             background: var(--color-white);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             margin: 2rem;
             max-width: 800px;
             width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-light);
         }
 
         .calendar-header h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--color-dark);
             font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .calendar-navigation {
@@ -45,11 +56,15 @@
             border-radius: 50%;
             transition: all 0.3s ease;
             background: var(--color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .calendar-navigation span:hover {
             background: var(--color-primary);
             color: var(--color-white);
+            transform: scale(1.1);
         }
 
         .calendar-grid {
@@ -69,24 +84,79 @@
 
         .calendar-day {
             aspect-ratio: 1;
-            border: 1px solid var(--color-light);
-            border-radius: 0.8rem;
+            border: 2px solid var(--color-light);
+            border-radius: 1rem;
             padding: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 0.3rem;
             font-size: 1.1rem;
+            position: relative;
+            background: var(--color-white);
+        }
+
+        .calendar-day .day-number {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .calendar-day .event-indicator {
+            width: 20px;
+            height: 3px;
+            background: var(--color-primary);
+            border-radius: 2px;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day.has-events .event-indicator {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .calendar-day:hover .event-indicator {
+            transform: scaleX(1.2);
+        }
+
+        .calendar-day.active .event-indicator {
+            background: var(--color-white);
+        }
+
+        /* Farklı kategoriler için farklı renkli göstergeler */
+        .calendar-day.has-events[data-event-type="ders"] .event-indicator {
+            background: #4CAF50;
+        }
+        .calendar-day.has-events[data-event-type="odev"] .event-indicator {
+            background: #2196F3;
+        }
+        .calendar-day.has-events[data-event-type="sinav"] .event-indicator {
+            background: #F44336;
+        }
+        .calendar-day.has-events[data-event-type="diger"] .event-indicator {
+            background: #9C27B0;
+        }
+
+        /* Birden fazla etkinlik türü varsa gösterge stili */
+        .calendar-day.has-multiple-events .event-indicator {
+            background: linear-gradient(to right, #4CAF50, #2196F3, #F44336, #9C27B0);
         }
 
         .calendar-day:hover {
             background: var(--color-light);
+            border-color: var(--color-primary);
+            transform: scale(1.05);
         }
 
         .calendar-day.active {
             background: var(--color-primary);
             color: var(--color-white);
+            border-color: var(--color-primary);
+            transform: scale(1.05);
         }
 
         .calendar-day.has-events {
@@ -103,28 +173,37 @@
 
         .event-list {
             background: var(--color-white);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             margin: 2rem 0;
             flex: 1;
             max-width: 500px;
             height: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .event-list:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .event-list h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             color: var(--color-dark);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
+            letter-spacing: -0.5px;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-light);
         }
 
         .event-item {
             display: flex;
             align-items: center;
-            padding: 1.2rem;
-            border: 1px solid var(--color-light);
-            border-radius: 0.8rem;
+            padding: 1.5rem;
+            border: 2px solid var(--color-light);
+            border-radius: 1rem;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
             background: var(--color-background);
@@ -132,6 +211,8 @@
         }
 
         .event-item:hover {
+            transform: translateX(5px);
+            border-color: var(--color-primary);
             background: var(--color-light);
         }
 
@@ -181,19 +262,20 @@
             right: 2rem;
             background: var(--color-primary);
             color: var(--color-white);
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
         }
 
         .add-event-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(90deg);
+            border-radius: 50%;
         }
 
         .event-modal {
@@ -212,12 +294,13 @@
             display: flex;
         }
 
-        .modal-content {
+        .event-modal .modal-content {
             background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 1rem;
+            padding: 3rem;
+            border-radius: 1.5rem;
             width: 90%;
             max-width: 600px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
         }
 
         .modal-header {
@@ -251,26 +334,39 @@
         .form-group input, 
         .form-group textarea, 
         .form-group select {
-            padding: 1rem;
-            border: 1px solid var(--color-light);
-            border-radius: 0.8rem;
+            padding: 1.2rem;
+            border: 2px solid var(--color-light);
+            border-radius: 1rem;
             font-size: 1rem;
             width: 100%;
             background: var(--color-background);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
         .btn-submit {
             background: var(--color-primary);
             color: var(--color-white);
-            padding: 0.8rem;
+            padding: 1.2rem;
             border: none;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 1rem;
         }
 
         .btn-submit:hover {
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
         }
 
         @media screen and (max-width: 1200px) {
@@ -428,13 +524,70 @@
                 opacity: 0;
             }
         }
+
+        /* Kategori renkleri */
+        .event-item[data-category="ders"] {
+            border-left: 4px solid #4CAF50;
+        }
+        .event-item[data-category="odev"] {
+            border-left: 4px solid #2196F3;
+        }
+        .event-item[data-category="sinav"] {
+            border-left: 4px solid #F44336;
+        }
+        .event-item[data-category="diger"] {
+            border-left: 4px solid #9C27B0;
+        }
+
+        /* Takvimde etkinlik göstergeleri */
+        .calendar-day .event-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+        }
+
+        .calendar-day .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover .event-dot {
+            transform: scale(1.2);
+        }
+
+        /* Boş durum mesajı */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--color-dark-variant);
+            background: var(--color-background);
+            border-radius: 1rem;
+            border: 2px dashed var(--color-light);
+        }
+        .empty-state span {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            color: var(--color-primary);
+            opacity: 0.5;
+        }
+        .empty-state p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="./images/logo.png" alt="">
-            <h2>A<span class="danger">T</span>AY</h2>
+        <div class="logo" title="ATAY KOÇ">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='%233b82f6' d='M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496 288 320 364.8 144 288L128 408z'/%3E%3C/svg%3E" alt="ATAY KOÇ Logo">
+            <h2>A<span class="danger" style="color:#3b82f6;">T</span>AY KOÇ</h2>
         </div>
         <div class="navbar">
             <a href="{{route('account.dashboard')}}">
@@ -443,22 +596,26 @@
             </a>
             <a href="{{route('account.timeTable')}}" class="active">
                 <span class="material-icons-sharp">today</span>
-                <h3>Takvim</h3>
-            </a> 
-            <a href="{{route('account.examination')}}">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Ders İçerikleri</h3>
+                <h3>Kişisel Takvim</h3> 
             </a>
-            <a href="password.html">
-                <span class="material-icons-sharp">password</span>
-                <h3>Change Password</h3>
+            <a href="{{ route('account.messages') }}" class="chat-link">
+                <span class="material-icons-sharp">chat</span>
+                <h3>Mesajlarım</h3>
+                <span class="message-badge" id="messageBadge" style="display: none;">0</span>
             </a>
-            <a href="{{route('account.logout')}}">
-                <span class="material-icons-sharp">logout</span>
-                <h3>Logout</h3>
+            <a href="/profile" target="_blank" class="profile-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                <span class="material-icons-sharp">person</span>
+                <h3>Profil</h3>
             </a>
+            <form method="POST" action="{{ route('account.logout') }}" style="display:flex;align-items:center;gap:0.5rem;margin-left:auto;">
+                @csrf
+                <button type="submit" style="background:transparent;border:none;padding:0 12px;height:48px;display:flex;align-items:center;color:#6c757d;font-weight:500;font-size:1.05rem;cursor:pointer;border-radius:0.7rem;transition:background 0.2s, color 0.2s;">
+                    <span class="material-icons-sharp" style="font-size:1.6rem;margin-right:0.3rem;">logout</span>
+                    <span style="font-size:1.08rem;">Çıkış Yap</span>
+                </button>
+            </form>
         </div>
-        <div id="profile-btn" style="display: none;">
+        <div id="profile-btn">
             <span class="material-icons-sharp">person</span>
         </div>
         <div class="theme-toggler">
@@ -484,14 +641,16 @@
                 <div class="calendar-day-header">Cum</div>
                 <div class="calendar-day-header">Cmt</div>
                 <div class="calendar-day-header">Paz</div>
-                <!-- Takvim günleri JavaScript ile doldurulacak -->
             </div>
         </div>
 
         <div class="event-list">
             <h3>Günlük Etkinlikler</h3>
             <div id="eventContainer">
-                <!-- Etkinlikler JavaScript ile doldurulacak -->
+                <div class="empty-state">
+                    <span class="material-icons-sharp">event_busy</span>
+                    <p>Bu güne ait etkinlik bulunmamaktadır.</p>
+                </div>
             </div>
         </div>
 
@@ -508,7 +667,7 @@
                 <form class="event-form" onsubmit="addEvent(event)">
                     <div class="form-group">
                         <label>Etkinlik Başlığı</label>
-                        <input type="text" id="eventTitle" required>
+                        <input type="text" id="eventTitle" required placeholder="Örn: Matematik Dersi">
                     </div>
                     <div class="form-group">
                         <label>Tarih</label>
@@ -525,6 +684,7 @@
                     <div class="form-group">
                         <label>Kategori</label>
                         <select id="eventCategory" required>
+                            <option value="">Kategori seçin</option>
                             <option value="ders">Ders</option>
                             <option value="odev">Ödev</option>
                             <option value="sinav">Sınav</option>
@@ -533,7 +693,7 @@
                     </div>
                     <div class="form-group">
                         <label>Açıklama</label>
-                        <textarea id="eventDescription" rows="3"></textarea>
+                        <textarea id="eventDescription" rows="3" placeholder="Etkinlik detaylarını buraya yazabilirsiniz..."></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Kaydet</button>
                 </form>
@@ -617,14 +777,35 @@
                 dayDiv.classList.add('active');
             }
 
-            dayDiv.textContent = date.getDate();
-            dayDiv.addEventListener('click', () => selectDate(date));
+            // Gün numarası için div
+            const dayNumber = document.createElement('div');
+            dayNumber.className = 'day-number';
+            dayNumber.textContent = date.getDate();
+            dayDiv.appendChild(dayNumber);
+
+            // Etkinlik göstergesi için div
+            const indicator = document.createElement('div');
+            indicator.className = 'event-indicator';
+            dayDiv.appendChild(indicator);
             
-            // Etkinlik varsa işaretle
-            if (hasEvents(date)) {
+            // Etkinlik kontrolü
+            const dateStr = date.toISOString().split('T')[0];
+            const dayEvents = events.filter(event => event.date === dateStr);
+            
+            if (dayEvents.length > 0) {
                 dayDiv.classList.add('has-events');
+                
+                // Etkinlik kategorilerini kontrol et
+                const categories = [...new Set(dayEvents.map(event => event.category))];
+                
+                if (categories.length > 1) {
+                    dayDiv.classList.add('has-multiple-events');
+                } else {
+                    dayDiv.setAttribute('data-event-type', categories[0]);
+                }
             }
 
+            dayDiv.addEventListener('click', () => selectDate(date));
             return dayDiv;
         }
 
@@ -649,7 +830,6 @@
             const eventContainer = document.getElementById('eventContainer');
             eventContainer.innerHTML = '';
             
-            // Seçili tarihe ait etkinlikleri filtrele ve sırala
             const dayEvents = events.filter(event => {
                 const eventDate = new Date(event.date);
                 const selectedDateStr = selectedDate.toISOString().split('T')[0];
@@ -657,20 +837,26 @@
             }).sort((a, b) => a.start_time.localeCompare(b.start_time));
 
             if (dayEvents.length === 0) {
-                eventContainer.innerHTML = '<p>Bu güne ait etkinlik bulunmamaktadır.</p>';
+                eventContainer.innerHTML = `
+                    <div class="empty-state">
+                        <span class="material-icons-sharp">event_busy</span>
+                        <p>Bu güne ait etkinlik bulunmamaktadır.</p>
+                    </div>
+                `;
                 return;
             }
             
             dayEvents.forEach(event => {
                 const eventDiv = document.createElement('div');
                 eventDiv.className = 'event-item';
+                eventDiv.setAttribute('data-category', event.category);
                 eventDiv.innerHTML = `
                     <span class="material-icons-sharp event-delete-btn" onclick="deleteEvent(${event.id})">delete</span>
-                    <div class="event-time">${event.start_time} - ${event.end_time}</div>
+                    <div class="event-time">${event.start_time.substring(0,5)} - ${event.end_time.substring(0,5)}</div>
                     <div class="event-details">
                         <h4>${event.title}</h4>
                         <p class="event-category">${getCategoryLabel(event.category)}</p>
-                        <p>${event.description || ''}</p>
+                        ${event.description ? `<p>${event.description}</p>` : ''}
                     </div>
                 `;
                 eventContainer.appendChild(eventDiv);

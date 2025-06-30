@@ -14,16 +14,34 @@ class Task extends Model
         'description',
         'due_date',
         'completed',
-        'user_id'
+        'completed_at',
+        'approved',
+        'approved_at',
+        'student_id',
+        'coach_id',
+        'task_type',
+        'ders_type',
+        'ders_konu',
+        'deneme_type',
+        'deneme_ders',
+        'deneme_sure'
     ];
 
     protected $casts = [
+        'due_date' => 'datetime',
+        'completed_at' => 'datetime',
+        'approved_at' => 'datetime',
         'completed' => 'boolean',
-        'due_date' => 'date'
+        'approved' => 'boolean'
     ];
 
-    public function user()
+    public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id');
+    }
+
+    public function coach()
+    {
+        return $this->belongsTo(User::class, 'coach_id');
     }
 }

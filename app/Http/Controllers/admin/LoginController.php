@@ -4,13 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class LoginController extends Controller
 {
     public function index(){
-        return view('admin.login');
+        return view('admin.auth.login');
     }
 
     public function authenticate(Request $request){
@@ -40,8 +40,10 @@ class LoginController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout(Request $request){
         Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.login');
     }
 }

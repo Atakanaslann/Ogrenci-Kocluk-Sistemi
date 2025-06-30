@@ -232,7 +232,12 @@
         {{ strftime('%d %B %Y') }}
       </div>
       <nav>
-        <a href="{{route('account.logout')}}">Çıkış Yap</a>
+        <form method="POST" action="{{ route('account.logout') }}" style="display:inline;">
+            @csrf
+            <button type="submit" style="background:none;border:none;color:inherit;cursor:pointer;">
+                Çıkış Yap
+            </button>
+        </form>
       </nav>
     </div>
   </header>

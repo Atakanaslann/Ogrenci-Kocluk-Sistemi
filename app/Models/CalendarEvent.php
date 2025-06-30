@@ -10,17 +10,27 @@ class CalendarEvent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'title',
-        'date',
-        'start_time',
-        'end_time',
-        'category',
-        'description'
+        'description',
+        'start_date',
+        'end_date',
+        'student_id',
+        'coach_id',
+        'color'
     ];
 
-    public function user()
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime'
+    ];
+
+    public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id');
+    }
+
+    public function coach()
+    {
+        return $this->belongsTo(User::class, 'coach_id');
     }
 }

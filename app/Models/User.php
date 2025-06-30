@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'city',
+        'phone',
+        'tc_kimlik',
     ];
 
     /**
@@ -38,11 +43,45 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function isStudent()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->role === 'student';
+    }
+
+    public function isTeacher()
+    {
+        return $this->role === 'teacher';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, $this->role === 'student' ? 'student_id' : 'teacher_id');
+    }
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class)->withTimestamps();
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'coach_student', 'coach_id', 'student_id')
+            ->where('role', 'student');
+    }
+
+    public function coaches()
+    {
+        return $this->belongsToMany(User::class, 'coach_student', 'student_id', 'coach_id')
+            ->where('role', 'coach');
     }
 }

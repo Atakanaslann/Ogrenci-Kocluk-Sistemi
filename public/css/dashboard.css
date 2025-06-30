@@ -83,7 +83,7 @@ b{color: var(--color-dark);}
     margin: 0 3rem;
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
-    padding-top: 4rem;
+    padding-top: 6rem;
 }
 header h3{font-weight: 500;} 
 header{
@@ -91,51 +91,81 @@ header{
     width: 100vw;
     z-index: 1000;
     background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
 }
-header.active{box-shadow: var(--box-shadow);}
+header.active{
+    box-shadow: var(--box-shadow);
+}
 header .logo{
     display: flex;
-    gap: .8rem;
+    align-items: center;
+    gap: 1rem;
     margin-right: auto;
+    transition: all 0.3s ease;
 }
 header .logo img{
-    width: 2rem;
-    height: 2rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    object-fit: contain;
 }
-
-header,
+header .logo h2{
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-dark);
+}
+header .logo h2 .danger{
+    color: var(--color-danger);
+}
 header .navbar{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 3rem;
-    color: var(--color-info);
+    gap: 1.5rem;
 }
 header .navbar a{
     display: flex;
-    margin-left: 2rem;
-    gap: 1rem;
     align-items: center;
-    justify-content: space-between;
-    position: relative;
-    height: 3.7rem;
+    gap: 0.6rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.8rem;
     transition: all 300ms ease;
-    padding: 0 2rem;
+    color: var(--color-dark-varient);
 }
-header .navbar a:hover {
-    padding-top: 1.5rem;
-}
-header .navbar a.active{
+header .navbar a:hover{
     background: var(--color-light);
     color: var(--color-primary);
+    transform: translateY(-2px);
 }
-header .navbar a.active::before{
-    content: "";
-    background-color: var(--color-primary);
-    position: absolute;
-    height: 5px;
-    width: 100%;
-    left: 0;top: 0;
+header .navbar a.active{
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+header .navbar a.active span,
+header .navbar a.active h3{
+    color: var(--color-white);
+}
+header .navbar a span{
+    font-size: 1.4rem;
+    color: var(--color-dark-varient);
+}
+header .navbar a h3{
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-dark-varient);
+}
+header .navbar a.role-badge{
+    background: var(--color-light);
+    border: 1px solid var(--color-primary);
+}
+header .navbar a.role-badge:hover{
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+header .navbar a.role-badge:hover span,
+header .navbar a.role-badge:hover h3{
+    color: var(--color-white);
 }
 header #profile-btn{
     display: none;
@@ -171,32 +201,128 @@ header .theme-toggler span.active{
 /* Profile section  */
 aside .profile{
     margin-top: 2rem;
-    width: 13rem;
+    width: 14rem;
     position: fixed;
+    background: var(--color-white);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 300ms ease;
 }
+
 aside .profile .top{
+    background: linear-gradient(135deg, var(--color-primary) 0%, #4a65f6 100%);
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    color: var(--color-white);
+    position: relative;
+}
+
+aside .profile .top::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--color-white);
+    border-radius: 50% 50% 0 0;
+}
+
+aside .profile .top .profile-photo{
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    margin: 0 auto 0.8rem;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+}
+
+aside .profile .top .profile-photo span{
+    font-size: 2.5rem;
+    color: var(--color-white);
+}
+
+aside .profile .top .info{
+    position: relative;
+    z-index: 2;
+}
+
+aside .profile .top .info h3{
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+aside .profile .top .info p{
+    font-size: 0.85rem;
+}
+
+aside .profile .stats{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    background: var(--color-white);
     border-bottom: 1px solid var(--color-light);
-    padding-bottom: 1rem;
 }
-aside .profile .top:hover .profile-photo{
-    scale: 1.05;
+
+aside .profile .stats .stat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
 }
-aside .profile .top .profile-photo{
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid var(--color-light);
-    transition: all 400ms ease;
+
+aside .profile .stats .stat .value{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
 }
-aside .profile .about p{
-    padding-bottom: 1rem;
+
+aside .profile .stats .stat .label{
+    font-size: 0.9rem;
+    color: var(--color-dark-varient);
+    font-weight: 500;
+    text-align: center;
 }
+
 aside .profile .about{
-    margin-top: 1rem;
+    padding: 1.2rem;
+}
+
+aside .profile .about h5{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+aside .profile .about h5 span{
+    font-size: 1.1rem;
+    color: var(--color-primary);
+}
+
+aside .profile .about p{
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--color-dark-varient);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+aside .profile .about p span{
+    font-size: 1.1rem;
+    color: var(--color-primary);
 }
 
 /* Home Section  */
@@ -385,42 +511,87 @@ main .timetable.active .closeBtn{
 }
 .right .leaves .teacher:hover{box-shadow: none;}
 
+.student-header .profile-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-
-
+.student-header .profile-photo span {
+    font-size: 2.2rem;
+    color: var(--color-white);
+}
 
 /* MEDIA QUERIES  */
 @media screen and (max-width: 1200px) {
-    html{font-size: 12px;}
+    html{
+        font-size: 12px;
+    }
     .container{
         grid-template-columns: 13rem auto 20rem;
+        padding-top: 4rem;
     }
-    header{position: fixed;}
-    .container{padding-top: 4rem;}
-    header .logo h2{display: none;}
-    header .navbar h3{display: none;}
-    header .navbar a{width: 4.5rem; padding: 0 1rem;}
-
-    main .subjects{
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1;
+    header{
+        padding: 0.5rem 2rem;
     }
-    main .timetable{
-        width: 150%;
-        position: absolute;
-        padding: 4rem 0 0 0;
+    header .logo h2{
+        font-size: 1.6rem;
+    }
+    header .navbar h3{
+        display: none;
+    }
+    header .navbar a{
+        padding: 0 1rem;
     }
 }
 
-
-@media screen and (max-width: 768px){
-    html{font-size: 10px;}
-    header{padding: 0 .8rem;}
-    .container{width: 100%; grid-template-columns: 1fr;margin: 0;}
-    header #profile-btn{display: inline;}
-    header .navbar{padding: 0;}
-    header .navbar a{margin: 0 .5rem 0 0;}
-    header .theme-toggler{margin: 0;}
+@media screen and (max-width: 768px) {
+    html{
+        font-size: 10px;
+    }
+    header{
+        padding: 0.5rem 1rem;
+    }
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    header .logo img{
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+    header .logo h2{
+        font-size: 1.4rem;
+    }
+    header #profile-btn{
+        display: inline;
+    }
+    header .navbar{
+        gap: 0.8rem;
+    }
+    header .navbar a{
+        padding: 0.6rem 1rem;
+    }
+    header .navbar a span{
+        font-size: 1.2rem;
+    }
+    header .navbar a h3{
+        display: none;
+    }
+    header .navbar a.role-badge h3{
+        display: block;
+        font-size: 0.8rem;
+    }
+    header .theme-toggler{
+        margin: 0;
+    }
     aside{
         position: absolute;
         top: 4rem;left: 0;right: 0;
@@ -449,5 +620,154 @@ main .timetable.active .closeBtn{
     .right{
         width: 100%;
         padding: 2rem;
+    }
+    aside .profile{
+        width: 100%;
+        position: relative;
+        margin: 1rem 0;
+    }
+    aside .profile .top{
+        padding: 1.5rem;
+    }
+    aside .profile .top .profile-photo{
+        width: 4rem;
+        height: 4rem;
+    }
+    aside .profile .top .profile-photo span{
+        font-size: 2.2rem;
+    }
+    aside .profile .stats{
+        padding: 0.8rem;
+    }
+    aside .profile .stats .stat .value{
+        font-size: 1.3rem;
+    }
+    aside .profile .stats .stat .label{
+        font-size: 0.8rem;
+    }
+    aside .profile .about{
+        padding: 1rem;
+    }
+    .student-header .profile-photo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .student-header .profile-photo span {
+        font-size: 1.8rem;
+    }
+}
+
+.task-modal .modal-content {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task-modal .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.task-modal .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.task-modal .form-group input,
+.task-modal .form-group select,
+.task-modal .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--color-light);
+    border-radius: 0.5rem;
+    background: var(--color-background);
+    font-size: 1rem;
+    transition: all 300ms ease;
+}
+
+.task-modal .form-group input:focus,
+.task-modal .form-group select:focus,
+.task-modal .form-group textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(54, 162, 235, 0.1);
+}
+
+.task-modal .task-fields {
+    background: var(--color-background);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-light);
+}
+
+.task-modal .task-fields .form-group:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .task-modal .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .task-modal .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .task-modal .form-group input,
+    .task-modal .form-group select,
+    .task-modal .form-group textarea {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+.completion-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.completion-status.completed {
+    color: #198754;
+}
+
+.completion-status.waiting-approval {
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.completion-status.waiting-approval::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
     }
 }

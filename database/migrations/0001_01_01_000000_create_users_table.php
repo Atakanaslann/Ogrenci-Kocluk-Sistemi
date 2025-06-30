@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id'); // Birincil anahtar (id)
-            $table->string('name'); // Kullanıcı adı
-            $table->string('email')->unique(); // E-posta adresi
-            $table->string('password'); // Şifre
-            $table->enum('role', ['student', 'coach','admin'])->default('student'); // Kullanıcı rolü
-            $table->timestamps(); // created_at ve updated_at sütunları
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('role', 20)->default('student');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

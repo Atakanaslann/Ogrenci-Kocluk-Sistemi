@@ -175,18 +175,17 @@
             <a href="{{route('account.timeTable')}}" onclick="timeTableAll()">
                 <span class="material-icons-sharp">today</span>
                 <h3>Takvim</h3> 
-            <a href="{{route('account.examination')}}" class="active">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Ders İçerikleri</h3>
-            
             <a href="password.html">
                 <span class="material-icons-sharp">password</span>
                 <h3>Change Password</h3>
             </a>
-            <a href="{{route('account.logout')}}">
-                <span class="material-icons-sharp">logout</span>
-                <h3>Logout</h3>
-            </a>
+            <form method="POST" action="{{ route('account.logout') }}" style="display:flex;align-items:center;gap:0.5rem;margin-left:auto;">
+                @csrf
+                <button type="submit" style="background:transparent;border:none;padding:0 12px;height:48px;display:flex;align-items:center;color:#6c757d;font-weight:500;font-size:1.05rem;cursor:pointer;border-radius:0.7rem;transition:background 0.2s, color 0.2s;">
+                    <span class="material-icons-sharp" style="font-size:1.6rem;margin-right:0.3rem;">logout</span>
+                    <span style="font-size:1.08rem;">Çıkış Yap</span>
+                </button>
+            </form>
         </div>
         <div id="profile-btn" style="display: none;">
             <span class="material-icons-sharp">person</span>

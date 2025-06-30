@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Task;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
@@ -24,8 +25,11 @@ class LoginController extends Controller
         if($validator->passes()){
 
             if(Auth::attempt(['email'=> $request->email, 'password'=> $request->password])){
+                // Kullanıcı rolüne göre yönlendirme
+                if(Auth::user()->role === 'coach') {
+                    return redirect()->route('coach.dashboard');
+                }
                 return redirect()->route('account.dashboard');
-
             }else{
                 return redirect()->route('account.login')->with('error','E-posta veya Şifre hatalı');
             }
@@ -36,7 +40,6 @@ class LoginController extends Controller
     }
 
     public function register(){
-
         return view('auth.register');
     }
 
@@ -66,7 +69,6 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-
         return redirect()->route('account.login');
     }
 }
