@@ -103,7 +103,7 @@ Dijital ortamda çalışma alışkanlığı kazandırma
 ```bash 
   php artisan key:generate
 ```
-**5-Veritabanını Çalıştırın:
+**5-Veritabanını Çalıştırın:**
 ```bash 
   php artisan migrate
 ```
