@@ -1,66 +1,118 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+✅ Proje Adı: Öğrenci Koçluk Sistemi
 
-## About Laravel
+✅ Amaç: Öğrencilerin bireysel ve akademik performansını artırmak, planlı çalışma ve gelişim takibi sağlamak
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+✅ Teknolojiler: Laravel, XAMPP
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+✅ Kullanıcı rolleri:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Öğrenci
 
-## Learning Laravel
+Koç
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Yönetici
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+✅ Temel özellikler:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Öğrencilerin test sonuçları, kitap verileri yükleyebilmesi
 
-## Laravel Sponsors
+Hedef belirleme ve ilerleme takibi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Koçların öğrencilere ödev, rehberlik ve takip desteği sunması
 
-### Premium Partners
+Yöneticilerin genel yönetim, izleme ve raporlama yetkileri
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Anlık öğrenci-koç iletişimi
 
-## Contributing
+Dijital ortamda çalışma alışkanlığı kazandırma
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+✅ Hedef: Eğitimde dijitalleşme sayesinde verimli çalışma ve düzenli ilerleme sağlamak
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![Image](https://github.com/user-attachments/assets/3fedb8af-9c39-42e8-ab1c-03c37c7906ce)
 
-## Security Vulnerabilities
+    
+## Ekran Görüntüleri
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![Image](https://github.com/user-attachments/assets/caa5f9a5-1b4e-4b7b-a3d0-54758ae5a5b0)
 
-## License
+![Image](https://github.com/user-attachments/assets/0b402469-09ec-4e4f-a1b1-6b4e461a12a6)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Image](https://github.com/user-attachments/assets/48abf195-6f1c-4355-a961-eb12be74c0e0)
+
+![Image](https://github.com/user-attachments/assets/7ebca2d3-b16f-4b92-8578-336aaa92aafa)
+
+![Image](https://github.com/user-attachments/assets/d62d9c3f-deee-4d4b-8df4-41b558aca86e)
+
+![Image](https://github.com/user-attachments/assets/92483d9b-83ed-45c0-aede-eda0a22c55e0)
+
+![Image](https://github.com/user-attachments/assets/da6b7fb1-7757-4e34-9189-5ecf2628f7f3)
+
+![Image](https://github.com/user-attachments/assets/14ed4c19-0089-4b90-bd4f-b863a4f823bd)
+
+![Image](https://github.com/user-attachments/assets/20528c3a-f047-4a68-bb01-ad947f6789fc)
+
+![Image](https://github.com/user-attachments/assets/783180b1-aeb9-478f-a2da-e6c6c0c9f2bd)
+
+![Image](https://github.com/user-attachments/assets/df3223b8-ec75-4b8a-9a3c-0218b0be6b38)
+
+![Image](https://github.com/user-attachments/assets/2c23e5d8-adb8-4a80-93cc-599722bee34d)
+
+![Image](https://github.com/user-attachments/assets/38b01e10-4680-4410-a275-08655dccdbe8)
+
+![Image](https://github.com/user-attachments/assets/379fef24-b0c1-4672-b5de-64e2b3842945)
+
+![Image](https://github.com/user-attachments/assets/3484ce7d-3015-4361-b635-0ecdd0b8f845)
+
+![Image](https://github.com/user-attachments/assets/6029eaac-7689-49a7-9e24-095ba8e1b6bb)
+
+![Image](https://github.com/user-attachments/assets/8002891b-97e8-4e18-afc9-d28266fdfa04)
+
+![Image](https://github.com/user-attachments/assets/1a5adf94-157c-46d3-84ee-18887867f035)
+  
+## Kullanılan Teknolojiler
+
+**Backend:** Laravel (PHP)
+
+**Frontend:** Blade, Tailwind CSS, Bootstrap, JavaScript 
+
+
+
+
+
+  
+## Yükleme 
+
+**1-Depoyu Klonla:**
+
+```bash 
+  git clone https://github.com/AtakannaslannOgrenci-Kocluk-Sistemi.git
+  cd ogrenciKocluk  
+```
+**2-Bağımlılıkları Yükleyin:**
+```bash 
+  composer install 
+```
+**3-Ortam Dosyasını Yapılandırın:**
+```bash 
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=ogrenci_kocluk
+  DB_USERNAME=root
+  DB_PASSWORD=
+```
+**4-Uygulama Anahtarını Oluşturun:**
+```bash 
+  php artisan key:generate
+```
+**5-Veritabanını Çalıştırın:
+```bash 
+  php artisan migrate
+```
+**6-Uygulamayı Başlatın:**
+```bash 
+  php artisan serve
+```    
