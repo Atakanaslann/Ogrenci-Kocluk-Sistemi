@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Image](https://github.com/user-attachments/assets/3fedb8af-9c39-42e8-ab1c-03c37c7906ce)
 
 ✅ Proje Adı: Öğrenci Koçluk Sistemi
 
@@ -31,9 +31,7 @@ Dijital ortamda çalışma alışkanlığı kazandırma
 ✅ Hedef: Eğitimde dijitalleşme sayesinde verimli çalışma ve düzenli ilerleme sağlamak
 
 
-![Image](https://github.com/user-attachments/assets/3fedb8af-9c39-42e8-ab1c-03c37c7906ce)
-
-    
+  
 ## Ekran Görüntüleri
 
 ![Image](https://github.com/user-attachments/assets/caa5f9a5-1b4e-4b7b-a3d0-54758ae5a5b0)
@@ -73,23 +71,13 @@ Dijital ortamda çalışma alışkanlığı kazandırma
 ![Image](https://github.com/user-attachments/assets/1a5adf94-157c-46d3-84ee-18887867f035)
   
 ## Kullanılan Teknolojiler
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" width="100" />
-<img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3" width="100" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" width="100" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="100" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="100" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="100" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" width="100" /> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="100" />
 
 **Backend:** Laravel (PHP)
 
 **Frontend:** Blade, Tailwind CSS, Bootstrap, JavaScript 
 
 
-
-
-
-  
 ## Yükleme 
 
 **1-Depoyu Klonla:**
