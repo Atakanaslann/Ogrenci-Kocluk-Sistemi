@@ -4,7 +4,7 @@
 
 ✅ Amaç: Öğrencilerin bireysel ve akademik performansını artırmak, planlı çalışma ve gelişim takibi sağlamak
 
-✅ Teknolojiler: Laravel, XAMPP
+✅ Teknolojiler: Laravel, XAMPP, PHP, JavaScript, HTML, CSS, Bootstrap, Tailwind CSS, Blade
 
 ✅ Kullanıcı rolleri:
 
@@ -71,7 +71,8 @@ Dijital ortamda çalışma alışkanlığı kazandırma
 ![Image](https://github.com/user-attachments/assets/1a5adf94-157c-46d3-84ee-18887867f035)
   
 ## Kullanılan Teknolojiler
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" width="100" /> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="100" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" width="100" /> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="100" /> <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="100" /> <img src="https://cdn.icon-icons.com/icons2/3053/PNG/512/xampp_macos_bigsur_icon_189954.png" alt="XAMPP" width="100" />
+
 
 **Backend:** Laravel (PHP)
 
